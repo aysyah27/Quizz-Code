@@ -612,110 +612,85 @@ y = 2
 print(x / y)`,
       options: ["2", "2.5", "2.0", "Error"],
       answer: 1,
-      explanation: "Operator `/` di Python 3 selalu menghasilkan float. 5 / 2 = 2.5"
+      explanation: "5 / 2 = 2.5"
     },
     {
-      q: "Program berikut akan menghasilkan error. Di baris berapa dan error apa?",
-      code: `nama = "Alice"
-umur = 25
-print("Nama: " + nama + ", Umur: " + umur)`,
-      options: [
-        "Baris 3 — TypeError: can only concatenate str (not int) to str",
-        "Baris 1 — SyntaxError",
-        "Tidak ada error, output: Nama: Alice, Umur: 25",
-        "Baris 2 — NameError"
-      ],
-      answer: 0,
-      explanation: "Python tidak bisa menggabungkan string dan int secara langsung dengan `+`. Perlu konversi: str(umur)."
+      q: "Apa output dari program berikut?",
+      code: `x = 10
+x += 5
+x = x * 2
+print(x)`,
+      options: ["20", "25", "30", "15"],
+      answer: 2,
+      explanation: "10 + 5 = 15 -> 15 * 2 = 30"
     },
     {
       q: "Apa output dari kode ini?",
       code: `def hitung(a, b=10):
     return a * b
 
-print(hitung(3))
 print(hitung(3, 5))`,
-      options: ["30\n15", "3\n15", "Error\n15", "30\n30"],
-      answer: 0,
-      explanation: "Pemanggilan pertama menggunakan nilai default b=10, jadi 3*10=30. Pemanggilan kedua b=5, jadi 3*5=15."
+      options: ["30", "15", "8", "Error"],
+      answer: 1,
+      explanation: "b diisi 5, jadi 3 * 5 = 15"
     },
     {
-      q: "Apa yang dicetak program ini?",
+      q: "Apa yang dicetak oleh program ini?",
+      code: `angka = [10, 20, 30, 40]
+print(angka[2])`,
+      options: ["10", "20", "30", "40"],
+      answer: 2,
+      explanation: "Indeks dimulai dari 0. Indeks 2 adalah 30."
+    },
+    {
+      q: "Apa output dari kode berikut?",
       code: `angka = [1, 2, 3, 4, 5]
 print(angka[1:4])`,
       options: ["[2, 3, 4]", "[1, 2, 3, 4]", "[2, 3, 4, 5]", "[1, 2, 3]"],
       answer: 0,
-      explanation: "Slicing `[1:4]` mengambil indeks 1, 2, 3 (indeks 4 tidak termasuk). Hasilnya [2, 3, 4]."
-    },
-    {
-      q: "Apa output dari program berikut?",
-      code: `x = 10
-
-def ubah():
-    x = 20
-    print(x)
-
-ubah()
-print(x)`,
-      options: ["20\n10", "20\n20", "10\n10", "Error"],
-      answer: 0,
-      explanation: "Variabel x di dalam fungsi adalah variabel lokal. Tidak mempengaruhi variabel x global. Fungsi print 20, luar fungsi print 10."
+      explanation: "Slicing [1:4] mengambil indeks 1, 2, dan 3."
     },
     {
       q: "Program ini akan menghasilkan output apa?",
       code: `hasil = []
 for i in range(3):
-    hasil.append(i ** 2)
+    hasil.append(i)
 print(hasil)`,
-      options: ["[0, 1, 4]", "[1, 4, 9]", "[0, 1, 2]", "[0, 2, 4]"],
-      answer: 0,
-      explanation: "range(3) menghasilkan 0,1,2. Dipangkatkan 2: 0²=0, 1²=1, 2²=4. Hasilnya [0, 1, 4]."
+      options: ["[1, 2, 3]", "[0, 1, 2]", "[0, 1, 2, 3]", "[0, 0, 0]"],
+      answer: 1,
+      explanation: "range(3) menghasilkan angka 0, 1, 2."
     },
     {
       q: "Apa output dari kode berikut?",
-      code: `teks = "Hello, World!"
-print(teks[-6:])`,
-      options: ["World!", "orld!", "Hello,", "World"],
+      code: `teks = "Python"
+print(teks[0])`,
+      options: ["P", "y", "n", "Error"],
       answer: 0,
-      explanation: "Indeks negatif -6 menghitung dari belakang. Karakter ke-6 dari belakang adalah 'W'. Jadi hasilnya 'World!'."
+      explanation: "Karakter pertama (indeks 0) adalah 'P'."
     },
     {
-      q: "Apakah program ini error? Jika ya, apa penyebabnya?",
+      q: "Apa output dari kode di bawah ini?",
       code: `data = {"nama": "Budi", "umur": 30}
-print(data["alamat"])`,
-      options: [
-        "Error — KeyError: 'alamat'",
-        "Error — IndexError",
-        "Output: None",
-        "Output: {}"
-      ],
-      answer: 0,
-      explanation: "Kunci 'alamat' tidak ada di dictionary. Mengaksesnya langsung dengan [] menyebabkan KeyError. Gunakan .get('alamat') jika ingin None."
+print(data["nama"])`,
+      options: ["nama", "30", "Budi", "KeyError"],
+      answer: 2,
+      explanation: "Mengambil nilai dari key 'nama', yaitu 'Budi'."
     },
     {
       q: "Apa output dari program ini?",
-      code: `def tambah(lst):
-    lst.append(99)
-
-angka = [1, 2, 3]
-tambah(angka)
-print(angka)`,
-      options: ["[1, 2, 3, 99]", "[1, 2, 3]", "Error", "[99]"],
-      answer: 0,
-      explanation: "List adalah mutable dan dipass by reference. Perubahan di dalam fungsi mempengaruhi list aslinya. Hasilnya [1, 2, 3, 99]."
+      code: `x = True
+y = False
+print(x and not y)`,
+      options: ["False", "None", "Error", "True"],
+      answer: 3,
+      explanation: "True and (not False) -> True and True = True."
     },
     {
-      q: "Apa yang dicetak oleh program ini?",
-      code: `print(type(10 / 2))
-print(type(10 // 2))`,
-      options: [
-        "<class 'float'>\n<class 'int'>",
-        "<class 'int'>\n<class 'int'>",
-        "<class 'float'>\n<class 'float'>",
-        "Error"
-      ],
-      answer: 0,
-      explanation: "Operator / selalu menghasilkan float (5.0), sedangkan // adalah floor division yang menghasilkan int (5)."
+      q: "Apa output dari program ini?",
+      code: `print(10 // 3)`,
+      options: ["3.33", "3", "1", "0"],
+      answer: 1,
+      explanation: "// adalah pembagian bulat. 10 dibagi 3 menghasilkan 3."
     }
   ],
 
@@ -728,31 +703,12 @@ using namespace std;
 int main() {
     int x = 5;
     int y = 2;
-    cout << x / y << endl;
+    cout << x / y;
     return 0;
 }`,
-      options: ["2", "2.5", "2.0", "Error kompilasi"],
-      answer: 0,
-      explanation: "Dalam C++, pembagian dua bilangan int menghasilkan int (pembagian integer). 5/2 = 2 (sisa dibuang)."
-    },
-    {
-      q: "Apa yang terjadi saat program ini dijalankan?",
-      code: `#include <iostream>
-using namespace std;
-
-int main() {
-    int arr[3] = {10, 20, 30};
-    cout << arr[5] << endl;
-    return 0;
-}`,
-      options: [
-        "Undefined Behavior — akses memori di luar batas",
-        "Error kompilasi",
-        "Output: 0",
-        "Program crash pasti"
-      ],
-      answer: 0,
-      explanation: "Akses indeks di luar batas array adalah Undefined Behavior di C++. Bisa jadi output random, crash, atau keduanya — kompiler tidak mendeteksinya."
+      options: ["2.5", "2", "2.0", "0"],
+      answer: 1,
+      explanation: "Integer dibagi integer hasilnya bulat. 5 / 2 = 2."
     },
     {
       q: "Apa output dari kode berikut?",
@@ -760,15 +716,28 @@ int main() {
 using namespace std;
 
 int main() {
-    int x = 10;
-    int* ptr = &x;
-    *ptr = 50;
-    cout << x << endl;
+    int arr[3] = {10, 20, 30};
+    cout << arr[0];
     return 0;
 }`,
-      options: ["50", "10", "Alamat memori", "Error"],
-      answer: 0,
-      explanation: "*ptr = 50 mengubah nilai di alamat yang ditunjuk pointer, yaitu variabel x. Maka x menjadi 50."
+      options: ["1", "10", "20", "Error"],
+      answer: 1,
+      explanation: "Elemen pertama array (indeks 0) adalah 10."
+    },
+    {
+      q: "Apa output dari kode di bawah ini?",
+      code: `#include <iostream>
+using namespace std;
+
+int main() {
+    int x = 5;
+    x++;
+    cout << x;
+    return 0;
+}`,
+      options: ["5", "4", "Error", "6"],
+      answer: 3,
+      explanation: "x++ menambah nilai x sebanyak 1. 5 + 1 = 6."
     },
     {
       q: "Apa output dari program ini?",
@@ -776,53 +745,33 @@ int main() {
 using namespace std;
 
 int main() {
-    for (int i = 0; i < 5; i++) {
-        if (i == 3) break;
-        cout << i << " ";
+    for (int i = 0; i < 3; i++) {
+        cout << i;
     }
     return 0;
 }`,
-      options: ["0 1 2", "0 1 2 3", "0 1 2 3 4", "0 1 2 4"],
-      answer: 0,
-      explanation: "Loop berjalan dari 0. Saat i==3, break dijalankan dan loop berhenti. Yang tercetak: 0 1 2."
+      options: ["123", "012", "0123", "333"],
+      answer: 1,
+      explanation: "Loop mencetak i dari 0 sampai kurang dari 3: 0, 1, 2."
     },
     {
-      q: "Apa yang terjadi pada program ini?",
+      q: "Apa output dari kode ini?",
       code: `#include <iostream>
 using namespace std;
 
 int main() {
-    unsigned int x = 0;
-    x = x - 1;
-    cout << x << endl;
+    int a = 5;
+    int b = 3;
+    if (a < b) {
+        cout << "X";
+    } else {
+        cout << "Y";
+    }
     return 0;
 }`,
-      options: [
-        "4294967295 (nilai maksimum uint)",
-        "-1",
-        "Error kompilasi",
-        "0"
-      ],
-      answer: 0,
-      explanation: "unsigned int tidak bisa negatif. 0-1 mengalami integer underflow dan wrap-around ke nilai maksimum: 4294967295 (2³²-1)."
-    },
-    {
-      q: "Apa output dari fungsi rekursif ini?",
-      code: `#include <iostream>
-using namespace std;
-
-int faktorial(int n) {
-    if (n == 0) return 1;
-    return n * faktorial(n - 1);
-}
-
-int main() {
-    cout << faktorial(4) << endl;
-    return 0;
-}`,
-      options: ["24", "12", "4", "Error"],
-      answer: 0,
-      explanation: "4! = 4×3×2×1 = 24. Basis kasus n=0 mengembalikan 1."
+      options: ["X", "Y", "XY", "Error"],
+      answer: 1,
+      explanation: "5 < 3 bernilai salah (false), maka masuk ke blok else (Y)."
     },
     {
       q: "Apa output dari program berikut?",
@@ -830,60 +779,56 @@ int main() {
 using namespace std;
 
 int main() {
-    int a = 5, b = 3;
-    cout << (a > b ? "a lebih besar" : "b lebih besar") << endl;
-    cout << (a == 5 && b == 5 ? "sama" : "beda") << endl;
+    int x = 10 % 3;
+    cout << x;
     return 0;
 }`,
-      options: [
-        "a lebih besar\nbeda",
-        "b lebih besar\nbeda",
-        "a lebih besar\nsama",
-        "Error"
-      ],
-      answer: 0,
-      explanation: "5>3 true → 'a lebih besar'. a==5 true tapi b==5 false → && false → 'beda'."
+      options: ["3", "0", "1", "2"],
+      answer: 2,
+      explanation: "10 dibagi 3 sisanya 1."
     },
     {
-      q: "Apakah program ini bisa dikompilasi? Jika tidak, apa masalahnya?",
+      q: "Apa output dari kode di bawah ini?",
       code: `#include <iostream>
 using namespace std;
 
 int main() {
-    const int MAX = 10;
-    MAX = 20;
-    cout << MAX << endl;
+    char h = 'A';
+    cout << h;
     return 0;
 }`,
-      options: [
-        "Error kompilasi — tidak bisa mengubah nilai const",
-        "Output: 20",
-        "Output: 10",
-        "Runtime error"
-      ],
+      options: ["A", "char", "65", "Error"],
       answer: 0,
-      explanation: "const membuat variabel tidak bisa diubah setelah inisialisasi. Baris MAX=20 menyebabkan compile error."
+      explanation: "Mencetak karakter yang disimpan di variabel h, yaitu 'A'."
     },
     {
       q: "Apa output dari kode ini?",
       code: `#include <iostream>
 using namespace std;
 
-void swap(int a, int b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
 int main() {
-    int x = 5, y = 10;
-    swap(x, y);
-    cout << x << " " << y << endl;
+    int a = 2;
+    int b = 4;
+    cout << a * b + 2;
     return 0;
 }`,
-      options: ["5 10", "10 5", "0 0", "Error"],
-      answer: 0,
-      explanation: "Parameter dipass by value. Perubahan a dan b di dalam fungsi tidak mempengaruhi x dan y di main. Tetap 5 10."
+      options: ["12", "10", "8", "Error"],
+      answer: 1,
+      explanation: "Perkalian didahulukan: 2 * 4 = 8 -> 8 + 2 = 10."
+    },
+    {
+      q: "Apa output dari program berikut?",
+      code: `#include <iostream>
+using namespace std;
+
+int main() {
+    int x = 5;
+    cout << ++x;
+    return 0;
+}`,
+      options: ["5", "6", "4", "Error"],
+      answer: 1,
+      explanation: "++x menambah nilai dulu baru dicetak. 5 + 1 = 6."
     },
     {
       q: "Apa output dari program ini?",
@@ -891,136 +836,112 @@ int main() {
 using namespace std;
 
 int main() {
-    int i = 1;
-    while (i <= 5) {
-        if (i % 2 == 0)
-            cout << i << " ";
-        i++;
+    int x = 5;
+    int y = 5;
+    if (x != y) {
+        cout << "A";
+    } else {
+        cout << "B";
     }
     return 0;
 }`,
-      options: ["2 4", "1 3 5", "2 4 6", "1 2 3 4 5"],
-      answer: 0,
-      explanation: "Loop dari 1-5, hanya mencetak yang habis dibagi 2 (genap): 2 dan 4."
+      options: ["A", "B", "AB", "0"],
+      answer: 1,
+      explanation: "5 != 5 bernilai salah (false), maka masuk ke blok else (B)."
     }
   ],
 
   js: [
     {
-      q: "Apa output dari kode JavaScript berikut?",
-      code: `console.log(typeof null);`,
-      options: ["'object'", "'null'", "'undefined'", "'string'"],
-      answer: 0,
-      explanation: "Ini adalah bug terkenal di JavaScript! typeof null mengembalikan 'object', bukan 'null'. Ini sudah ada sejak versi pertama JS dan tidak diperbaiki untuk menjaga kompatibilitas."
-    },
-    {
-      q: "Apa yang dicetak oleh kode ini?",
-      code: `console.log(0.1 + 0.2 === 0.3);`,
-      options: ["false", "true", "Error", "undefined"],
-      answer: 0,
-      explanation: "0.1 + 0.2 = 0.30000000000000004 dalam floating point IEEE 754. Nilainya tidak sama persis dengan 0.3, sehingga hasilnya false."
-    },
-    {
-      q: "Apa output dari program ini?",
-      code: `var x = 1;
-
-function test() {
-    console.log(x);
-    var x = 2;
-    console.log(x);
-}
-
-test();`,
-      options: ["undefined\n2", "1\n2", "Error", "1\n1"],
-      answer: 0,
-      explanation: "Hoisting! Deklarasi var x di dalam fungsi diangkat ke atas, tapi nilainya tidak. Jadi saat console.log pertama, x sudah ada tapi nilainya undefined."
-    },
-    {
-      q: "Apa yang dicetak kode ini?",
-      code: `const arr = [1, 2, 3];
-const result = arr.map(x => x * 2).filter(x => x > 3);
-console.log(result);`,
-      options: ["[4, 6]", "[2, 4, 6]", "[6]", "[4]"],
-      answer: 0,
-      explanation: "map mengubah [1,2,3] menjadi [2,4,6]. filter(x > 3) menyisakan [4, 6]."
+      q: "Apa output dari kode di bawah ini?",
+      code: `let x = "5";
+let y = 5;
+console.log(x == y);`,
+      options: ["false", "true", "undefined", "Error"],
+      answer: 1,
+      explanation: "== hanya mengecek nilai. String '5' nilainya sama dengan angka 5."
     },
     {
       q: "Apa output dari kode berikut?",
-      code: `function outer() {
-    let count = 0;
-    return function() {
-        count++;
-        return count;
-    };
-}
-
-const fn = outer();
-console.log(fn());
-console.log(fn());
-console.log(fn());`,
-      options: ["1\n2\n3", "0\n1\n2", "1\n1\n1", "Error"],
-      answer: 0,
-      explanation: "Ini adalah closure. Fungsi dalam 'mengingat' variabel count dari fungsi luar. Setiap panggilan fn() menambah count yang sama."
+      code: `let x = "5";
+let y = 5;
+console.log(x === y);`,
+      options: ["true", "false", "undefined", "Error"],
+      answer: 1,
+      explanation: "=== mengecek nilai dan tipe data. Tipe datanya berbeda (string vs number), jadi false."
+    },
+    {
+      q: "Apa output dari kode operasi string berikut?",
+      code: `console.log("A" + "B");`,
+      options: ["A B", "AB", "Error", "undefined"],
+      answer: 1,
+      explanation: "Operator + menggabungkan string 'A' dan 'B' menjadi 'AB'."
+    },
+    {
+      q: "Apa isi dari array buah setelah kode ini dijalankan?",
+      code: `let buah = ["apel", "mangga"];
+buah.push("jeruk");
+console.log(buah);`,
+      options: [["jeruk", "apel", "mangga"], ["apel", "jeruk"], ["apel", "mangga"], ["apel", "mangga", "jeruk"]],
+      answer: 3,
+      explanation: ".push() menambah elemen ke akhir array."
     },
     {
       q: "Apa output dari program ini?",
-      code: `console.log(1 + "2");
-console.log("3" - 1);
-console.log(true + true);`,
-      options: ['"12"\n2\n2', '"12"\n"31"\n2', '3\n2\n2', 'Error'],
+      code: `let angka = 10;
+if (angka % 2 === 0) {
+    console.log("Genap");
+} else {
+    console.log("Ganjil");
+}`,
+      options: ["Genap", "Ganjil", "10", "0"],
       answer: 0,
-      explanation: "1+'2'='12' (type coercion, + jadi string concat). '3'-1=2 (- selalu numerik). true+true=1+1=2."
+      explanation: "10 dibagi 2 sisa 0 (habis dibagi), maka outputnya 'Genap'."
     },
     {
-      q: "Apa yang dihasilkan kode async ini?",
-      code: `console.log("1");
-
-setTimeout(() => {
-    console.log("2");
-}, 0);
-
-console.log("3");`,
-      options: ["1\n3\n2", "1\n2\n3", "2\n1\n3", "Error"],
+      q: "Apa output dari kode di bawah ini?",
+      code: `let score = 50;
+score = score + 10;
+console.log(score);`,
+      options: ["50", "10", "60", "Error"],
+      answer: 2,
+      explanation: "50 + 10 = 60."
+    },
+    {
+      q: "Apa hasil dari operasi matematika berikut?",
+      code: `let x = 10;
+let y = 3;
+console.log(x % y);`,
+      options: ["3", "3.33", "1", "0"],
+      answer: 2,
+      explanation: "% adalah modulo (sisa bagi). 10 dibagi 3 sisanya 1."
+    },
+    {
+      q: "Apa output dari kode perulangan ini?",
+      code: `let i = 1;
+while(i < 3) {
+    console.log(i);
+    i++;
+}`,
+      options: ["1\n2", "1\n2\n3", "0\n1\n2", "1"],
       answer: 0,
-      explanation: "Event loop: kode sinkron jalan dulu (1, 3), setTimeout masuk queue. Setelah call stack kosong, callback dieksekusi (2)."
+      explanation: "Loop berjalan saat i = 1 dan i = 2. Ketika i = 3, loop berhenti."
     },
     {
       q: "Apa output dari kode berikut?",
-      code: `const obj = { a: 1, b: 2, c: 3 };
-const { a, ...rest } = obj;
-console.log(a);
-console.log(rest);`,
-      options: ["1\n{ b: 2, c: 3 }", "1\n{ a: 1, b: 2, c: 3 }", "Error", "undefined\n{}"],
-      answer: 0,
-      explanation: "Destructuring dengan rest operator. a mendapat nilai 1, rest mendapat semua properti sisanya: { b: 2, c: 3 }."
+      code: `let arr = [10, 20, 30];
+console.log(arr.length);`,
+      options: ["2", "4", "3", "Error"],
+      answer: 2,
+      explanation: ".length mengambil jumlah elemen di dalam array, yaitu 3."
     },
     {
-      q: "Apa yang dicetak program ini?",
-      code: `let a = [1, 2, 3];
-let b = a;
-b.push(4);
-console.log(a);
-console.log(b);`,
-      options: [
-        "[1, 2, 3, 4]\n[1, 2, 3, 4]",
-        "[1, 2, 3]\n[1, 2, 3, 4]",
-        "Error",
-        "[1, 2, 3]\n[1, 2, 3]"
-      ],
-      answer: 0,
-      explanation: "Array adalah reference type. b = a tidak menyalin array, tapi menyalin referensi ke array yang sama. Perubahan pada b juga mempengaruhi a."
-    },
-    {
-      q: "Apa output dari kode ini?",
-      code: `const promise = new Promise((resolve) => {
-    resolve(42);
-});
-
-promise.then(val => console.log(val * 2));
-console.log("selesai");`,
-      options: ["selesai\n84", "84\nselesai", "Error", "undefined"],
-      answer: 0,
-      explanation: ".then() adalah asynchronous, dieksekusi setelah call stack kosong. Jadi 'selesai' tercetak lebih dulu, baru kemudian 84."
+      q: "Apa output dari program ini?",
+      code: `let aktif = false;
+console.log(!aktif);`,
+      options: ["false", "true", "0", "Error"],
+      answer: 1,
+      explanation: "Operator ! (not) membalikkan nilai. Kebalikan dari false adalah true."
     }
   ]
 };
