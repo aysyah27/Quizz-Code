@@ -615,15 +615,18 @@ print(x / y)`,
       explanation: "Operator `/` di Python 3 selalu menghasilkan float. 5 / 2 = 2.5"
     },
     {
-      q: "Bagaimana cara membuat komentar satu baris di Python?",
+      q: "Program berikut akan menghasilkan error. Di baris berapa dan error apa?",
+      code: `nama = "Alice"
+umur = 25
+print("Nama: " + nama + ", Umur: " + umur)`,
       options: [
-        "// Ini komentar",
-        "/* Ini komentar */",
-        "# Ini komentar",
-        "-- Ini komentar"
+        "Baris 3 — TypeError: can only concatenate str (not int) to str",
+        "Baris 1 — SyntaxError",
+        "Tidak ada error, output: Nama: Alice, Umur: 25",
+        "Baris 2 — NameError"
       ],
-      answer: 2,
-      explanation: "Di Python, simbol '#' digunakan untuk mengawali komentar satu baris. Semua teks setelah simbol tersebut pada baris yang sama akan diabaikan oleh interpreter"
+      answer: 0,
+      explanation: "Python tidak bisa menggabungkan string dan int secara langsung dengan `+`. Perlu konversi: str(umur)."
     },
     {
       q: "Apa output dari kode ini?",
@@ -645,26 +648,29 @@ print(angka[1:4])`,
       explanation: "Slicing `[1:4]` mengambil indeks 1, 2, 3 (indeks 4 tidak termasuk). Hasilnya [2, 3, 4]."
     },
     {
-      q: "Perhatikan kode berikut:",
-      code: `x = 5
-y = "2"
-print(x * y)`,
-      options: ["10", "Error", "52", "22222"],
-      answer: 3,
-      explanation: "String "2" diulang sebanyak 5 kali"
+      q: "Apa output dari program berikut?",
+      code: `x = 10
+
+def ubah():
+    x = 20
+    print(x)
+
+ubah()
+print(x)`,
+      options: ["20\n10", "20\n20", "10\n10", "Error"],
+      answer: 0,
+      explanation: "Variabel x di dalam fungsi adalah variabel lokal. Tidak mempengaruhi variabel x global. Fungsi print 20, luar fungsi print 10."
     },
     {
-  q: "Fungsi mana yang digunakan untuk menampilkan teks atau output ke layar dalam Python?",
-  code: `print("Halo, selamat belajar Python!")`,
-  options: [
-    "echo()",
-    "print()",
-    "printf()",
-    "System.out.println()"
-  ],
-  answer: 1,
-  explanation: "Di Python, fungsi `print()` digunakan untuk mencetak teks, variabel, atau hasil ekspresi lainnya langsung ke layar konsol. Pilihan lain seperti `echo()` digunakan di PHP, `printf()` di C, dan `System.out.println()` di Java."
-},
+      q: "Program ini akan menghasilkan output apa?",
+      code: `hasil = []
+for i in range(3):
+    hasil.append(i ** 2)
+print(hasil)`,
+      options: ["[0, 1, 4]", "[1, 4, 9]", "[0, 1, 2]", "[0, 2, 4]"],
+      answer: 0,
+      explanation: "range(3) menghasilkan 0,1,2. Dipangkatkan 2: 0²=0, 1²=1, 2²=4. Hasilnya [0, 1, 4]."
+    },
     {
       q: "Apa output dari kode berikut?",
       code: `teks = "Hello, World!"
